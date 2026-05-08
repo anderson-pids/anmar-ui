@@ -19,14 +19,18 @@ def test_mount_serves_static_css(tmp_path):
     templates = Jinja2Templates(directory=str(tmp_path))
     mount(app, templates)
 
-    # Cria stub do CSS pra teste passar antes do build real (Task A10 cria de verdade)
+    # Garante que existe um anmar.css no path real pra StaticFiles servir.
+    # Se o bundle real já foi gerado (Task A10), preserva. Senão, cria stub mínimo.
     static_root = Path(__file__).parent.parent / "src" / "anmar_ui" / "static"
-    (static_root / "anmar.css").parent.mkdir(parents=True, exist_ok=True)
-    (static_root / "anmar.css").write_text("/* stub */", encoding="utf-8")
+    static_root.mkdir(parents=True, exist_ok=True)
+    css_path = static_root / "anmar.css"
+    if not css_path.exists():
+        css_path.write_text("/* stub */", encoding="utf-8")
 
     client = TestClient(app)
     resp = client.get("/static/anmar/v0.1/anmar.css")
     assert resp.status_code == 200
+    # Aceita stub OU bundle real (tem token --anmar-bordo)
     assert "stub" in resp.text or "--anmar-bordo" in resp.text
 
 
@@ -35,7 +39,8 @@ def test_mount_adds_templates_to_jinja(tmp_path):
     app_templates_dir = tmp_path / "app_templates"
     app_templates_dir.mkdir()
     (app_templates_dir / "page.html").write_text(
-        '{% extends "anmar_ui/base.html" %}{% block content %}OI{% endblock %}',
+        '{% extends "anmar_ui/base.html" %}'
+        '{% block content %}OI{% endblock %}',
         encoding="utf-8",
     )
 
@@ -43,13 +48,15 @@ def test_mount_adds_templates_to_jinja(tmp_path):
     templates = Jinja2Templates(directory=str(app_templates_dir))
     mount(app, templates)
 
-    # Stub do template base na lib (Task A11 cria real)
+    # Garante que existe base.html (cria stub mínimo se ainda não existir).
     lib_templates = Path(__file__).parent.parent / "src" / "anmar_ui" / "templates" / "anmar_ui"
     lib_templates.mkdir(parents=True, exist_ok=True)
-    (lib_templates / "base.html").write_text(
-        "<!doctype html><html><body>{% block content %}{% endblock %}</body></html>",
-        encoding="utf-8",
-    )
+    base_path = lib_templates / "base.html"
+    if not base_path.exists():
+        base_path.write_text(
+            "<!doctype html><html><body>{% block content %}{% endblock %}</body></html>",
+            encoding="utf-8",
+        )
 
     rendered = templates.get_template("page.html").render({"request": None})
     assert "OI" in rendered
