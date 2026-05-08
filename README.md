@@ -4,7 +4,7 @@ Design system compartilhado dos apps Anmar (`anmar-apps`, `anmar-rebanho`, `anma
 
 Tokens (cores brand book + spacing + fonts) + chrome (header/nav/footer) + forms + componentes de dados (table responsivo, card, dl, badge). Mobile-first, sem JS framework.
 
-> **Repo privado.** Acesso restrito (Anderson + apps Anmar). Limita distribuição da fonte Atomic Alice (comercial LHFs). Consumidores instalam via SSH; CI precisa de deploy key como secret.
+Repo público. A fonte Atomic Alice (comercial LHFs) está coberta pela licença web da Anmar — não redistribuir fora desse contexto.
 
 ## Identidade
 
@@ -15,7 +15,7 @@ Tokens (cores brand book + spacing + fonts) + chrome (header/nav/footer) + forms
 ## Install
 
 ```bash
-pip install git+ssh://git@github.com/anderson-pids/anmar-ui.git@v0.1.0
+pip install git+https://github.com/anderson-pids/anmar-ui.git@v0.1.0
 ```
 
 ## Use no FastAPI
@@ -64,7 +64,7 @@ Classes principais:
 ## Desenvolvimento
 
 ```bash
-git clone git@github.com:anderson-pids/anmar-ui.git
+git clone https://github.com/anderson-pids/anmar-ui.git
 cd anmar-ui
 python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 
