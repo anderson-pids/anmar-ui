@@ -1,0 +1,34 @@
+[project]
+name = "anmar-ui"
+version = "0.1.0"
+description = "Design system compartilhado dos apps Anmar (CSS + templates Jinja2 + helper FastAPI)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "jinja2>=3.1.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "httpx>=0.27.0",
+    "ruff>=0.6.0",
+    "fonttools>=4.60.0",
+    "brotli>=1.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anmar_ui"]
+artifacts = [
+    "src/anmar_ui/static/anmar.css",
+    "src/anmar_ui/static/fonts/*.woff2",
+    "src/anmar_ui/static/fonts/*.woff",
+    "src/anmar_ui/templates/anmar_ui/*.html",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
