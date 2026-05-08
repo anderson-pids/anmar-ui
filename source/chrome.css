@@ -1,0 +1,150 @@
+/* === Chrome (header, nav, footer) === */
+
+.anmar-header {
+    background: var(--anmar-bordo);
+    color: var(--anmar-white);
+    padding: var(--space-4) var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.anmar-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.anmar-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: inherit;
+}
+
+.anmar-header__logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.anmar-header__app-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-xl);
+    color: var(--anmar-white);
+    margin: 0;
+}
+
+.anmar-header__app-name::before {
+    content: "AnMar — ";
+    color: var(--anmar-amarelo);
+}
+
+.anmar-header__nav {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.anmar-header__nav a {
+    color: var(--anmar-white);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s;
+}
+
+.anmar-header__nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--anmar-amarelo);
+}
+
+.anmar-header__user {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+}
+
+.anmar-header__user-name {
+    opacity: 0.85;
+}
+
+.anmar-btn-logout {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--anmar-white);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    font-family: inherit;
+    transition: background-color 0.15s;
+}
+
+.anmar-btn-logout:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Hamburger toggle (mobile) */
+.anmar-header__hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--anmar-white);
+    font-size: var(--text-2xl);
+    cursor: pointer;
+    padding: var(--space-2);
+}
+
+@media (max-width: 768px) {
+    .anmar-header__nav {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: var(--space-1);
+        padding-top: var(--space-3);
+    }
+    .anmar-header__nav.is-open {
+        display: flex;
+    }
+    .anmar-header__hamburger {
+        display: block;
+        order: -1;
+    }
+    .anmar-header__user {
+        font-size: var(--text-xs);
+    }
+}
+
+/* Footer */
+.anmar-footer {
+    background: var(--anmar-gray-100);
+    color: var(--anmar-gray-700);
+    padding: var(--space-4) var(--space-6);
+    text-align: center;
+    font-size: var(--text-sm);
+    margin-top: var(--space-12);
+    border-top: 1px solid var(--anmar-gray-200);
+}
+
+.anmar-footer__tagline {
+    font-family: var(--font-display);
+    color: var(--anmar-bordo);
+    margin-right: var(--space-2);
+}
+
+/* Main */
+.anmar-main {
+    padding: var(--space-6);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .anmar-main {
+        padding: var(--space-4);
+    }
+}
