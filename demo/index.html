@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>anmar-ui — demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="../src/anmar_ui/static/anmar.css">
+</head>
+<body>
+  <header class="anmar-header">
+    <div class="anmar-header__inner">
+      <a href="#" class="anmar-header__brand">
+        <svg class="anmar-header__logo" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M50 90 L10 50 L25 35 L50 60 L75 35 L90 50 Z" fill="#5C0508"/>
+          <path d="M50 80 L20 50 L30 40 L50 60 L70 40 L80 50 Z" fill="#376324"/>
+          <path d="M50 70 L30 50 L37 43 L50 56 L63 43 L70 50 Z" fill="#78AE24"/>
+          <circle cx="72" cy="42" r="10" fill="#F6C101"/>
+        </svg>
+        <h1 class="anmar-header__app-name">Demo</h1>
+      </a>
+      <nav class="anmar-header__nav">
+        <a href="#tipografia">Tipografia</a>
+        <a href="#cores">Cores</a>
+        <a href="#forms">Forms</a>
+        <a href="#dados">Dados</a>
+      </nav>
+      <span class="anmar-header__user">
+        <span class="anmar-header__user-name">demo@anmar.agr.br</span>
+        <button class="anmar-btn-logout">Sair</button>
+      </span>
+    </div>
+  </header>
+
+  <main class="anmar-main">
+    <section id="tipografia">
+      <h1>Anmar Direto da Fazenda — Açaí, çã, çá</h1>
+      <h2>Heading 2 — Nunito 700</h2>
+      <h3>Heading 3</h3>
+      <p>Texto de parágrafo padrão em Nunito 400 com line-height 1.6 pra leitura confortável de texto longo. Suporta acentuação <strong>completa</strong> e <em>itálico</em>.</p>
+      <small>Texto pequeno em cinza-500.</small>
+      <p class="text-mono">123.456 ABC-789 (mono pra IDs)</p>
+    </section>
+
+    <section id="cores" style="margin-top: 2rem;">
+      <h2>Cores brand</h2>
+      <div class="anmar-cards-grid">
+        <div class="anmar-card" style="background: #5C0508; color: white;">
+          <div class="anmar-card__name" style="color: white;">Bordô</div>
+          <div class="anmar-card__meta" style="color: rgba(255,255,255,0.7);">#5C0508</div>
+        </div>
+        <div class="anmar-card" style="background: #376324; color: white;">
+          <div class="anmar-card__name" style="color: white;">Verde escuro</div>
+          <div class="anmar-card__meta" style="color: rgba(255,255,255,0.7);">#376324</div>
+        </div>
+        <div class="anmar-card" style="background: #78AE24; color: white;">
+          <div class="anmar-card__name" style="color: white;">Verde lima</div>
+          <div class="anmar-card__meta" style="color: rgba(255,255,255,0.7);">#78AE24</div>
+        </div>
+        <div class="anmar-card" style="background: #F6C101;">
+          <div class="anmar-card__name">Amarelo sol</div>
+          <div class="anmar-card__meta">#F6C101</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="forms" style="margin-top: 2rem;">
+      <h2>Forms</h2>
+      <form class="anmar-form">
+        <div class="anmar-form__row">
+          <label class="anmar-label anmar-label--required" for="brinco">Brinco</label>
+          <input class="anmar-input" id="brinco" placeholder="A0001" required>
+          <span class="anmar-field-help">Identificação única do animal</span>
+        </div>
+        <div class="anmar-form__row">
+          <label class="anmar-label" for="status">Status</label>
+          <select class="anmar-select" id="status">
+            <option>Ativo</option>
+            <option>Sêmen confirmado</option>
+            <option>Vendido</option>
+            <option>Morto</option>
+          </select>
+        </div>
+        <div class="anmar-form__row">
+          <label class="anmar-label" for="obs">Observações</label>
+          <textarea class="anmar-textarea" id="obs"></textarea>
+        </div>
+        <div class="anmar-field-error">Campo obrigatório não preenchido</div>
+        <div class="anmar-field-success">Salvo com sucesso</div>
+        <div class="anmar-form__row anmar-form__row--inline">
+          <button type="button" class="anmar-btn anmar-btn--primary">Salvar</button>
+          <button type="button" class="anmar-btn anmar-btn--accent">Confirmar</button>
+          <button type="button" class="anmar-btn anmar-btn--ghost">Cancelar</button>
+          <button type="button" class="anmar-btn anmar-btn--danger">Excluir</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="dados" style="margin-top: 2rem;">
+      <h2>Dados</h2>
+
+      <h3>Badges</h3>
+      <p>
+        <span class="anmar-badge anmar-badge--success">Ativo</span>
+        <span class="anmar-badge anmar-badge--warning">Sêmen confirmado</span>
+        <span class="anmar-badge anmar-badge--danger">Morto</span>
+        <span class="anmar-badge anmar-badge--neutral">Vendido</span>
+      </p>
+
+      <h3 style="margin-top: 1rem;">Tabela (redimensione a janela pra <768px pra ver mobile)</h3>
+      <table class="anmar-table">
+        <thead><tr><th>Brinco</th><th>Sexo</th><th>Status</th><th>Local</th></tr></thead>
+        <tbody>
+          <tr>
+            <td data-label="Brinco">A0001</td>
+            <td data-label="Sexo">Fêmea</td>
+            <td data-label="Status"><span class="anmar-badge anmar-badge--success">Ativa</span></td>
+            <td data-label="Local">Curral 1</td>
+          </tr>
+          <tr>
+            <td data-label="Brinco">A0002</td>
+            <td data-label="Sexo">Macho</td>
+            <td data-label="Status"><span class="anmar-badge anmar-badge--warning">Sêmen</span></td>
+            <td data-label="Local">Pasto 3</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top: 1rem;">Detail (dl)</h3>
+      <dl class="anmar-dl">
+        <dt>Brinco</dt><dd>A0001</dd>
+        <dt>Nascimento</dt><dd>2024-03-15</dd>
+        <dt>Status</dt><dd><span class="anmar-badge anmar-badge--success">Ativa</span></dd>
+        <dt>Local atual</dt><dd>Curral 1 (Serra Branca)</dd>
+      </dl>
+
+      <h3 style="margin-top: 1rem;">Cards</h3>
+      <div class="anmar-cards-grid">
+        <a href="#" class="anmar-card anmar-card--status-prod">
+          <div class="anmar-card__icon">🐄</div>
+          <div class="anmar-card__name">Rebanho</div>
+          <div class="anmar-card__meta">Em produção</div>
+        </a>
+        <a href="#" class="anmar-card anmar-card--status-dev">
+          <div class="anmar-card__icon">🥛</div>
+          <div class="anmar-card__name">Leite</div>
+          <div class="anmar-card__meta">Em desenvolvimento</div>
+        </a>
+        <a href="#" class="anmar-card anmar-card--status-planejado">
+          <div class="anmar-card__icon">🧀</div>
+          <div class="anmar-card__name">Queijaria</div>
+          <div class="anmar-card__meta">Planejado</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="anmar-footer">
+    <span class="anmar-footer__tagline">Direto da Fazenda</span>
+    <span>· anmar-ui v0.1.0 demo</span>
+  </footer>
+</body>
+</html>
