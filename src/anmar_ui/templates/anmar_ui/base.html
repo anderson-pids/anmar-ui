@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Anmar — {{ self.app_name() }}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="/static/anmar/v0.1/anmar.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  {% include "anmar_ui/_header.html" %}
+  <main class="anmar-main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="anmar-footer">
+    <span class="anmar-footer__tagline">Direto da Fazenda</span>
+    <span>· Anmar {% block app_version %}{% endblock %}</span>
+  </footer>
+  <script>
+    // Hamburger toggle
+    document.getElementById('anmar-hamburger')?.addEventListener('click', () => {
+      document.getElementById('anmar-nav')?.classList.toggle('is-open');
+    });
+    // SSO logout cross-app
+    document.getElementById('anmar-btn-logout')?.addEventListener('click', async () => {
+      const here = location.href;
+      try {
+        await fetch('https://apps.anmar.agr.br/logout', {method: 'POST', credentials: 'include'});
+      } catch (e) { /* offline ok */ }
+      location.href = 'https://apps.anmar.agr.br/login?redirect_to=' + encodeURIComponent(here);
+    });
+  </script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

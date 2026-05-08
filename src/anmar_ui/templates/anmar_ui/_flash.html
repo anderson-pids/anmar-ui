@@ -1,0 +1,6 @@
+{# Mensagens de feedback. Uso: {% include "anmar_ui/_flash.html" %} com `flash` dict no contexto. #}
+{% if flash %}
+  {% if flash.error %}<div class="anmar-field-error">{{ flash.error }}</div>{% endif %}
+  {% if flash.success %}<div class="anmar-field-success">{{ flash.success }}</div>{% endif %}
+  {% if flash.help %}<div class="anmar-field-help">{{ flash.help }}</div>{% endif %}
+{% endif %}

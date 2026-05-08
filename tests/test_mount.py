@@ -40,6 +40,7 @@ def test_mount_adds_templates_to_jinja(tmp_path):
     app_templates_dir.mkdir()
     (app_templates_dir / "page.html").write_text(
         '{% extends "anmar_ui/base.html" %}'
+        '{% block app_name %}Test{% endblock %}'
         '{% block content %}OI{% endblock %}',
         encoding="utf-8",
     )
@@ -48,18 +49,11 @@ def test_mount_adds_templates_to_jinja(tmp_path):
     templates = Jinja2Templates(directory=str(app_templates_dir))
     mount(app, templates)
 
-    # Garante que existe base.html (cria stub mínimo se ainda não existir).
-    lib_templates = Path(__file__).parent.parent / "src" / "anmar_ui" / "templates" / "anmar_ui"
-    lib_templates.mkdir(parents=True, exist_ok=True)
-    base_path = lib_templates / "base.html"
-    if not base_path.exists():
-        base_path.write_text(
-            "<!doctype html><html><body>{% block content %}{% endblock %}</body></html>",
-            encoding="utf-8",
-        )
-
+    # Templates reais já existem (Task A11). Não sobrescrever.
     rendered = templates.get_template("page.html").render({"request": None})
     assert "OI" in rendered
+    assert "Direto da Fazenda" in rendered
+    assert "Test" in rendered
 
 
 def test_mount_path_uses_major_minor_version():

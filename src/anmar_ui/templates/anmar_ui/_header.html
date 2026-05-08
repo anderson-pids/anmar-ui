@@ -1,0 +1,26 @@
+{# Macro do chrome — usado em base.html #}
+{% set u = request.state.user if request and request.state and request.state.user else None %}
+<header class="anmar-header">
+  <div class="anmar-header__inner">
+    <a href="/" class="anmar-header__brand">
+      {# Logo SVG inline (heart-shaped, simplificado da brand book) #}
+      <svg class="anmar-header__logo" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 90 L10 50 L25 35 L50 60 L75 35 L90 50 Z" fill="#5C0508"/>
+        <path d="M50 80 L20 50 L30 40 L50 60 L70 40 L80 50 Z" fill="#376324"/>
+        <path d="M50 70 L30 50 L37 43 L50 56 L63 43 L70 50 Z" fill="#78AE24"/>
+        <circle cx="72" cy="42" r="10" fill="#F6C101"/>
+      </svg>
+      <h1 class="anmar-header__app-name">{% block app_name %}Apps{% endblock %}</h1>
+    </a>
+    <button id="anmar-hamburger" class="anmar-header__hamburger" type="button" aria-label="Menu">☰</button>
+    <nav id="anmar-nav" class="anmar-header__nav">
+      {% block nav %}{% endblock %}
+    </nav>
+    {% if u %}
+    <span class="anmar-header__user">
+      <span class="anmar-header__user-name">{{ u.get('nome') or u.get('email') }}</span>
+      <button id="anmar-btn-logout" type="button" class="anmar-btn-logout">Sair</button>
+    </span>
+    {% endif %}
+  </div>
+</header>
