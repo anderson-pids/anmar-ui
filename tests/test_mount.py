@@ -1,7 +1,6 @@
 """Testes do helper mount() — integra anmar-ui com FastAPI + Jinja2Templates."""
 from pathlib import Path
 
-import pytest
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 from fastapi.testclient import TestClient

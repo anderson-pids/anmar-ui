@@ -24,6 +24,10 @@ def mount(app: FastAPI, templates: Jinja2Templates) -> None:
     Após chamar:
       - GET /static/anmar/v{major}.{minor}/* serve arquivos de anmar_ui/static/
       - templates pode renderizar `{% extends "anmar_ui/base.html" %}`
+
+    Importante: chame mount() ANTES de qualquer app.mount("/static", ...) próprio
+    do consumidor. Starlette resolve mounts em ordem; um mount mais genérico em
+    "/static" registrado antes capturaria requests pra "/static/anmar/...".
     """
     from anmar_ui import __version__
 
