@@ -1,0 +1,195 @@
+/* === Dados (table, card, dl, badge) === */
+
+/* Tabela responsiva — desktop normal, mobile vira stack de cards via data-label */
+.anmar-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--anmar-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.anmar-table th,
+.anmar-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--anmar-gray-100);
+}
+
+.anmar-table th {
+    background: var(--anmar-bordo-50);
+    color: var(--anmar-bordo);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.anmar-table tr:last-child td {
+    border-bottom: none;
+}
+
+.anmar-table tbody tr:hover {
+    background: var(--anmar-off);
+}
+
+@media (max-width: 768px) {
+    .anmar-table {
+        background: transparent;
+        box-shadow: none;
+    }
+    .anmar-table thead {
+        display: none;
+    }
+    .anmar-table,
+    .anmar-table tbody,
+    .anmar-table tr,
+    .anmar-table td {
+        display: block;
+        width: 100%;
+    }
+    .anmar-table tr {
+        background: var(--anmar-white);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: var(--space-3);
+        padding: var(--space-3);
+    }
+    .anmar-table td {
+        border: none;
+        padding: var(--space-1) 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-3);
+    }
+    .anmar-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--anmar-gray-500);
+        font-size: var(--text-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+}
+
+/* Card */
+.anmar-card {
+    background: var(--anmar-white);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s, transform 0.05s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+a.anmar-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.anmar-card--status-prod {
+    border-left: 4px solid var(--anmar-verde-lima);
+}
+
+.anmar-card--status-dev {
+    border-left: 4px solid var(--anmar-amarelo);
+}
+
+.anmar-card--status-planejado {
+    border-left: 4px solid var(--anmar-gray-300);
+}
+
+.anmar-card__icon {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.anmar-card__name {
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--anmar-bordo);
+    margin-bottom: var(--space-1);
+}
+
+.anmar-card__meta {
+    font-size: var(--text-sm);
+    color: var(--anmar-gray-500);
+}
+
+.anmar-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Definition list (detail view) */
+.anmar-dl {
+    background: var(--anmar-white);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-2) var(--space-4);
+    margin: 0 0 var(--space-4);
+    max-width: 600px;
+}
+
+.anmar-dl dt {
+    font-weight: 600;
+    color: var(--anmar-gray-500);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.anmar-dl dd {
+    margin: 0;
+    color: var(--anmar-gray-900);
+}
+
+@media (max-width: 600px) {
+    .anmar-dl {
+        grid-template-columns: 1fr;
+        gap: var(--space-1);
+    }
+    .anmar-dl dd {
+        margin-bottom: var(--space-2);
+    }
+}
+
+/* Badges */
+.anmar-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+}
+
+.anmar-badge--success {
+    background: var(--anmar-verde-lima-50);
+    color: var(--anmar-verde-escuro);
+}
+
+.anmar-badge--warning {
+    background: var(--anmar-amarelo-50);
+    color: var(--anmar-bordo);
+}
+
+.anmar-badge--danger {
+    background: var(--anmar-bordo-50);
+    color: var(--anmar-bordo);
+}
+
+.anmar-badge--neutral {
+    background: var(--anmar-gray-100);
+    color: var(--anmar-gray-700);
+}
