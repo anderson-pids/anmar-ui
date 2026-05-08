@@ -15,7 +15,7 @@ Repo público. A fonte Atomic Alice (comercial LHFs) está coberta pela licença
 ## Install
 
 ```bash
-pip install git+https://github.com/anderson-pids/anmar-ui.git@v0.1.0
+pip install git+https://github.com/anderson-pids/anmar-ui.git@v0.1.1
 ```
 
 ## Use no FastAPI

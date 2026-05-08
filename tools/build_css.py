@@ -2,9 +2,13 @@
 
 Sem minificação no MVP — bundle fica legível pra debug. Tamanho alvo <40KB.
 """
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(ROOT / "src"))
+from anmar_ui import __version__  # noqa: E402
+
 SOURCES = [
     "tokens.css",
     "reset.css",
@@ -17,7 +21,7 @@ OUT = ROOT / "src" / "anmar_ui" / "static" / "anmar.css"
 
 
 def build() -> Path:
-    parts = ["/* anmar-ui v0.1.0 — bundle (concatenação de source/*.css) */\n\n"]
+    parts = [f"/* anmar-ui v{__version__} — bundle (concatenação de source/*.css) */\n\n"]
     for name in SOURCES:
         path = ROOT / "source" / name
         if not path.exists():
