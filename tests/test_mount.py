@@ -10,7 +10,7 @@ from anmar_ui import mount, __version__
 
 def test_version_exposed():
     """__version__ está exposto e segue semver."""
-    assert __version__ == "0.1.1"
+    assert __version__ == "0.1.2"
 
 
 def test_mount_serves_static_css(tmp_path):
