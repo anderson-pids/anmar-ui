@@ -34,7 +34,7 @@
       {% if u %}
       <span class="anmar-header__user">
         <span class="anmar-header__user-name">{{ u.get('nome') or u.get('email') }}</span>
-        <button id="anmar-btn-logout" type="button" class="anmar-btn-logout">Sair</button>
+        {% block user_actions %}{% endblock %}
       </span>
       {% endif %}
     </div>
@@ -49,13 +49,6 @@
   <script>
     document.getElementById('anmar-hamburger')?.addEventListener('click', () => {
       document.getElementById('anmar-nav')?.classList.toggle('is-open');
-    });
-    document.getElementById('anmar-btn-logout')?.addEventListener('click', async () => {
-      const here = location.href;
-      try {
-        await fetch('https://apps.anmar.agr.br/logout', {method: 'POST', credentials: 'include'});
-      } catch (e) { /* offline ok */ }
-      location.href = 'https://apps.anmar.agr.br/login?redirect_to=' + encodeURIComponent(here);
     });
   </script>
   {% block extra_scripts %}{% endblock %}
