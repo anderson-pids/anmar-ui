@@ -78,17 +78,21 @@
 .anmar-card {
     background: var(--anmar-white);
     padding: var(--space-4);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.15s, transform 0.05s;
+    border: 1px solid var(--anmar-gray-200);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    transition: box-shadow 0.15s, transform 0.05s, border-color 0.15s;
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-a.anmar-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
+a.anmar-card:hover,
+a.anmar-card:focus-visible {
+    border-color: var(--anmar-bordo);
+    box-shadow: 0 6px 16px rgba(92, 5, 8, 0.15);
+    transform: translateY(-2px);
+    outline: none;
 }
 
 .anmar-card--status-prod {
