@@ -1,6 +1,6 @@
 [project]
 name = "anmar-ui"
-version = "0.1.4"
+version = "0.1.5"
 description = "Design system compartilhado dos apps Anmar (CSS + templates Jinja2 + helper FastAPI)"
 requires-python = ">=3.12"
 dependencies = [
@@ -11,6 +11,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
+    "playwright>=1.48.0",
     "httpx>=0.27.0",
     "ruff>=0.6.0",
     "fonttools>=4.60.0",
@@ -25,6 +26,8 @@ build-backend = "hatchling.build"
 packages = ["src/anmar_ui"]
 artifacts = [
     "src/anmar_ui/static/anmar.css",
+    "src/anmar_ui/static/dates-br.css",
+    "src/anmar_ui/static/dates-br.js",
     "src/anmar_ui/static/fonts/*.woff2",
     "src/anmar_ui/static/fonts/*.woff",
     "src/anmar_ui/templates/anmar_ui/*.html",

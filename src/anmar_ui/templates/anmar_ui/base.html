@@ -2,7 +2,7 @@
    participam da herança via extends, então app_name e nav ficavam vazios.
    Ver: https://github.com/pallets/jinja/issues/1394 #}
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
   <link rel="stylesheet" href="/static/anmar/v0.1/anmar.css">
+  <link rel="stylesheet" href="/static/anmar/v0.1/dates-br.css?v=1">
+  <script src="/static/anmar/v0.1/dates-br.js?v=1" defer></script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>

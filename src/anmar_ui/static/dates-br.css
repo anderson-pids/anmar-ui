@@ -1,0 +1,8 @@
+.anmar-date-control { display: inline-flex; align-items: stretch; position: relative; width: 100%; min-width: 0; gap: .35rem; }
+.anmar-date-control[hidden] { display: none !important; }
+.anmar-date-control .anmar-date-native { position: absolute !important; width: 1px !important; height: 1px !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; border: 0 !important; opacity: 0; pointer-events: none; }
+.anmar-date-control .anmar-date-display { flex: 1 1 auto; width: calc(10ch + 1.75rem); min-width: calc(10ch + 1.75rem); box-sizing: border-box; margin: 0; font: inherit; }
+.anmar-date-control .anmar-date-picker { flex: 0 0 44px; min-width: 44px; min-height: 44px; margin: 0; padding: .35rem; border: 1px solid #d8d6cf; border-radius: 4px; color: #5c0508; background: #fff; font-size: 1.5rem; cursor: pointer; }
+.anmar-date-control .anmar-date-picker:disabled { opacity: .5; cursor: default; }
+.anmar-date-control :focus-visible { outline: 3px solid #376324; outline-offset: 2px; }
+@media print { .anmar-date-control .anmar-date-picker { display: none; } }
