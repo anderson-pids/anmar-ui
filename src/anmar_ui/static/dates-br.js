@@ -1,6 +1,7 @@
 /* Datas brasileiras na tela; campos originais preservam o contrato ISO dos apps. */
 (() => {
   'use strict';
+  const t = (message, params = {}) => globalThis.AnmarI18n?.t(message, params) ?? message.replace(/\{(\w+)\}/g, (match, key) => Object.prototype.hasOwnProperty.call(params, key) ? String(params[key]) : match);
   const states = new WeakMap();
   let sequence = 0;
   const descriptors = Object.fromEntries(['value', 'valueAsDate', 'valueAsNumber'].map(
@@ -32,7 +33,7 @@
     display.id = native.id + '--br';
     display.dataset.dateFor = native.id;
     const labels = [...native.labels];
-    const label = native.getAttribute('aria-label') || labels.map(l => l.textContent.trim()).join(' ') || (month ? 'Mês' : 'Data');
+    const label = native.getAttribute('aria-label') || labels.map(l => l.textContent.trim()).join(' ') || t(month ? 'Mês' : 'Data');
     display.setAttribute('aria-label', label);
     for (const attr of ['aria-describedby', 'aria-labelledby', 'form', 'title']) {
       if (native.hasAttribute(attr)) display.setAttribute(attr, native.getAttribute(attr));
@@ -41,8 +42,8 @@
     button.type = 'button';
     button.className = 'anmar-date-picker';
     button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h2M14 15h2M8 18h2"/></svg>';
-    button.setAttribute('aria-label', 'Abrir calendário: ' + label);
-    button.title = 'Abrir calendário';
+    button.setAttribute('aria-label', t('Abrir calendário: {label}', {label}));
+    button.title = t('Abrir calendário');
     button.hidden = native.type === 'text';
     const sync = () => {
       display.value = format(native.value);
@@ -55,12 +56,12 @@
     };
     function validate() {
       let message = '';
-      if (display.value && !parse(display.value, month)) message = 'Informe uma data válida no formato ' + display.placeholder + '.';
-      else if (native.value && native.min && native.value < native.min) message = 'Use uma data a partir de ' + format(native.min) + '.';
-      else if (native.value && native.max && native.value > native.max) message = 'Use uma data até ' + format(native.max) + '.';
-      else if (native.validity.stepMismatch) message = 'Escolha uma data permitida no calendário.';
+      if (display.value && !parse(display.value, month)) message = t('Informe uma data válida no formato {formato}.', {formato: display.placeholder});
+      else if (native.value && native.min && native.value < native.min) message = t('Use uma data a partir de {data}.', {data: format(native.min)});
+      else if (native.value && native.max && native.value > native.max) message = t('Use uma data até {data}.', {data: format(native.max)});
+      else if (native.validity.stepMismatch) message = t('Escolha uma data permitida no calendário.');
       else if (native.validity.customError) message = native.validationMessage;
-      else if (native.required && !display.value) message = 'Informe ' + (month ? 'o mês.' : 'a data.');
+      else if (native.required && !display.value) message = t(month ? 'Informe o mês.' : 'Informe a data.');
       display.setCustomValidity(message);
     }
     states.set(native, {sync});

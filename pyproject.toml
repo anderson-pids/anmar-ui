@@ -1,6 +1,6 @@
 [project]
 name = "anmar-ui"
-version = "0.1.6"
+version = "0.1.7"
 description = "Design system compartilhado dos apps Anmar (CSS + templates Jinja2 + helper FastAPI)"
 requires-python = ">=3.12"
 dependencies = [
@@ -28,6 +28,8 @@ artifacts = [
     "src/anmar_ui/static/anmar.css",
     "src/anmar_ui/static/dates-br.css",
     "src/anmar_ui/static/dates-br.js",
+    "src/anmar_ui/static/i18n.js",
+    "src/anmar_ui/locales/*.json",
     "src/anmar_ui/static/fonts/*.woff2",
     "src/anmar_ui/static/fonts/*.woff",
     "src/anmar_ui/templates/anmar_ui/*.html",

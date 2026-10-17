@@ -38,6 +38,10 @@ def mount(app: FastAPI, templates: Jinja2Templates) -> None:
         name="anmar_ui_static",
     )
 
+    from anmar_ui.i18n import install
+
+    install(app, templates)
+
     # 2. Adicionar templates da lib aos paths do Jinja2Templates do consumidor
     existing_loader = templates.env.loader
     lib_loader = FileSystemLoader(str(_TEMPLATES_DIR))

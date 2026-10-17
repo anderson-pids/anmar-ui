@@ -2,7 +2,7 @@
    participam da herança via extends, então app_name e nav ficavam vazios.
    Ver: https://github.com/pallets/jinja/issues/1394 #}
 <!doctype html>
-<html lang="pt-BR">
+<html lang="{{ locale_for_request(request) }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,14 +12,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
   <link rel="stylesheet" href="/static/anmar/v0.1/anmar.css">
   <link rel="stylesheet" href="/static/anmar/v0.1/dates-br.css?v=2">
-  <script src="/static/anmar/v0.1/dates-br.js?v=2" defer></script>
+  <script id="anmar-i18n" type="application/json">{{ i18n_context() | tojson }}</script>
+  <script src="/static/anmar/v0.1/i18n.js?v=1"></script>
+  <script src="/static/anmar/v0.1/dates-br.js?v=3" defer></script>
   {% block extra_head %}{% endblock %}
 </head>
 <body>
   {% set u = request.state.user if request and request.state and request.state.user else None %}
   <header class="anmar-header">
     <div class="anmar-header__inner">
-      <a href="https://apps.anmar.agr.br/" class="anmar-header__brand" title="Voltar pro hub Anmar Apps">
+      <a href="https://apps.anmar.agr.br/" class="anmar-header__brand" title="{{ t('Voltar pro hub Anmar Apps') }}">
         {# Logo SVG inline (heart-shaped, simplificado da brand book) #}
         <svg class="anmar-header__logo" viewBox="0 0 100 100" aria-hidden="true">
           <path d="M50 90 L10 50 L25 35 L50 60 L75 35 L90 50 Z" fill="#5C0508"/>
@@ -29,7 +31,7 @@
         </svg>
         <h1 class="anmar-header__app-name">{% block app_name %}Apps{% endblock %}</h1>
       </a>
-      <button id="anmar-hamburger" class="anmar-header__hamburger" type="button" aria-label="Menu">☰</button>
+      <button id="anmar-hamburger" class="anmar-header__hamburger" type="button" aria-label="{{ t('Menu') }}">☰</button>
       <nav id="anmar-nav" class="anmar-header__nav">
         {% block nav %}{% endblock %}
       </nav>
@@ -45,7 +47,7 @@
     {% block content %}{% endblock %}
   </main>
   <footer class="anmar-footer">
-    <span class="anmar-footer__tagline">Direto da Fazenda</span>
+    <span class="anmar-footer__tagline">{{ t('Direto da Fazenda') }}</span>
     <span>· Anmar {% block app_version %}{% endblock %}</span>
   </footer>
   <script>
